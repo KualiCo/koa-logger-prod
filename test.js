@@ -12,7 +12,6 @@ chai.use(sc);
 var expect = chai.expect;
 
 // test subjects
-var chalk = require('chalk');
 var app = require('./test-server');
 var log, sandbox;
 
@@ -35,9 +34,9 @@ describe('koa-logger', function() {
 
   it('should log a request with correct method and url', function(done) {
     request(app.listen()).head('/200').expect(200, function() {
-      expect(log).to.have.been.calledWith('  ' + chalk.gray('<--')
-        + ' ' + chalk.bold('%s')
-        + ' ' + chalk.gray('%s'),
+      expect(log).to.have.been.calledWith('  ' + '<--'
+        + ' ' + '%s'
+        + ' ' + '%s',
           'HEAD',
           '/200');
       done();
@@ -53,12 +52,12 @@ describe('koa-logger', function() {
 
   it('should log a 200 response', function(done) {
     request(app.listen()).get('/200').expect(200, function() {
-      expect(log).to.have.been.calledWith('  ' + chalk.gray('-->')
-        + ' ' + chalk.bold('%s')
-        + ' ' + chalk.gray('%s')
-        + ' ' + chalk.green('%s')
-        + ' ' + chalk.gray('%s')
-        + ' ' + chalk.gray('%s'),
+      expect(log).to.have.been.calledWith('  ' + '-->'
+        + ' ' + '%s'
+        + ' ' + '%s'
+        + ' ' + '%s'
+        + ' ' + '%s'
+        + ' ' + '%s',
           'GET',
           '/200',
           200,
@@ -70,12 +69,12 @@ describe('koa-logger', function() {
 
   it('should log a 301 response', function(done) {
     request(app.listen()).get('/301').expect(301, function() {
-      expect(log).to.have.been.calledWith('  ' + chalk.gray('-->')
-        + ' ' + chalk.bold('%s')
-        + ' ' + chalk.gray('%s')
-        + ' ' + chalk.cyan('%s')
-        + ' ' + chalk.gray('%s')
-        + ' ' + chalk.gray('%s'),
+      expect(log).to.have.been.calledWith('  ' + '-->'
+        + ' ' + '%s'
+        + ' ' + '%s'
+        + ' ' + '%s'
+        + ' ' + '%s'
+        + ' ' + '%s',
           'GET',
           '/301',
           301,
@@ -87,12 +86,12 @@ describe('koa-logger', function() {
 
   it('should log a 304 response', function(done) {
     request(app.listen()).get('/304').expect(304, function() {
-      expect(log).to.have.been.calledWith('  ' + chalk.gray('-->')
-        + ' ' + chalk.bold('%s')
-        + ' ' + chalk.gray('%s')
-        + ' ' + chalk.cyan('%s')
-        + ' ' + chalk.gray('%s')
-        + ' ' + chalk.gray('%s'),
+      expect(log).to.have.been.calledWith('  ' + '-->'
+        + ' ' + '%s'
+        + ' ' + '%s'
+        + ' ' + '%s'
+        + ' ' + '%s'
+        + ' ' + '%s',
           'GET',
           '/304',
           304,
@@ -104,12 +103,12 @@ describe('koa-logger', function() {
 
   it('should log a 404 response', function(done) {
     request(app.listen()).get('/404').expect(404, function() {
-      expect(log).to.have.been.calledWith('  ' + chalk.gray('-->')
-        + ' ' + chalk.bold('%s')
-        + ' ' + chalk.gray('%s')
-        + ' ' + chalk.yellow('%s')
-        + ' ' + chalk.gray('%s')
-        + ' ' + chalk.gray('%s'),
+      expect(log).to.have.been.calledWith('  ' + '-->'
+        + ' ' + '%s'
+        + ' ' + '%s'
+        + ' ' + '%s'
+        + ' ' + '%s'
+        + ' ' + '%s',
           'GET',
           '/404',
           404,
@@ -121,12 +120,12 @@ describe('koa-logger', function() {
 
   it('should log a 500 response', function(done) {
     request(app.listen()).get('/500').expect(500, function() {
-      expect(log).to.have.been.calledWith('  ' + chalk.gray('-->')
-        + ' ' + chalk.bold('%s')
-        + ' ' + chalk.gray('%s')
-        + ' ' + chalk.red('%s')
-        + ' ' + chalk.gray('%s')
-        + ' ' + chalk.gray('%s'),
+      expect(log).to.have.been.calledWith('  ' + '-->'
+        + ' ' + '%s'
+        + ' ' + '%s'
+        + ' ' + '%s'
+        + ' ' + '%s'
+        + ' ' + '%s',
           'GET',
           '/500',
           500,
@@ -138,12 +137,12 @@ describe('koa-logger', function() {
 
   it('should log middleware error', function(done) {
     request(app.listen()).get('/error').expect(500, function() {
-      expect(log).to.have.been.calledWith('  ' + chalk.red('xxx')
-        + ' ' + chalk.bold('%s')
-        + ' ' + chalk.gray('%s')
-        + ' ' + chalk.red('%s')
-        + ' ' + chalk.gray('%s')
-        + ' ' + chalk.gray('%s'),
+      expect(log).to.have.been.calledWith('  ' + 'xxx'
+        + ' ' + '%s'
+        + ' ' + '%s'
+        + ' ' + '%s'
+        + ' ' + '%s'
+        + ' ' + '%s',
           'GET',
           '/error',
           500,
