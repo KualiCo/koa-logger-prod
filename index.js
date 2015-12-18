@@ -16,7 +16,7 @@ var isatty = process.stdout.isTTY;
  * Expose logger.
  */
 
-module.exports = dev;
+module.exports = prodDev;
 
 /**
  * Color map.
@@ -34,8 +34,8 @@ var colorCodes = {
  * Development logger.
  */
 
-function dev(opts) {
-  return function *logger(next) {
+function prodDev(opts) {
+  return function *prodLogger(next) {
     // request
     var start = new Date;
     console.log('  ' + '<--'
